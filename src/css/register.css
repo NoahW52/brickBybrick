@@ -1,6 +1,5 @@
-body {
+body.register-page {
     background-image: url('../images-gifs/b98b4c6a91ab12ba05328a752cfdce4f.gif');
     /* background-repeat: no-repeat; */
-    background-size: 320px;
-
+    background-size: 300px;
 }

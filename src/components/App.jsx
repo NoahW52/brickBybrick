@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-import './App.css'
+import '../css/App.css'
 
 
 function App() {
+  document.body.className = "home-page"
 
   return(
     <>

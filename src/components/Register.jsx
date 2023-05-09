@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../css/register.css'
 
 function Register(props) {
+    document.body.className = "register-page"
     const [register, setRegister] = useState({})
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
@@ -18,9 +19,7 @@ function Register(props) {
     const handleRegister = async () => {
         const response = await fetch('http://localhost:8080/api/register', {
             method: 'POST',
-            headers: {
-                "Content-Type": "application/json" 
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(register)
         })
         console.log(register)
@@ -36,6 +35,7 @@ function Register(props) {
     }
     return(
         <>
+            <div className='gif-background'></div>
             <Link to={'/'}>
                 <button>home</button>
             </Link>
