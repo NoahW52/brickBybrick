@@ -12,6 +12,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import ProtectedRoute from './components/ProtectedRoute'
 import Minifigs from './components/Minifigs'
+import Sets from './components/Sets'
 
 const store = createStore(Reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -28,6 +29,7 @@ root.render(
         <Routes>
           <Route path='/' element={<App />}/>
           <Route path='/minifigs' element={<Minifigs />} />
+          <Route path='/sets' element={<Sets />} />
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
         </Routes>

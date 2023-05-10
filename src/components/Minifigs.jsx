@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Headers from "./Headers"
 import '../css/Minifigs.css'
 
-function Minifigs() {
+function Minifigs(props) {
 
     const [info, setInfo] = useState({})
     const [nextUrl, setNextUrl] = useState('')
@@ -24,9 +24,8 @@ function Minifigs() {
         setInfo(result)
         setNextUrl(result.next)
         setPrevUrl(result.previous)
-
     }
-    const minfigDisplay = info.results && info.results.map((figs) => {
+    const minifigDisplay = info.results && info.results.map((figs) => {
         return(
                 <li key={figs.id} className="minifig-item">
                     <div>{figs.name}</div>
@@ -37,6 +36,11 @@ function Minifigs() {
                             <img src={'https://tng-avatars.imgix.net/default_avatar.jpeg?ar=1&auto=format&fit=crop&w=250'} className="figPic"/>
                         )}
                     </div>
+                    <div>
+                        { props.authUser ? (
+                            <button className="button">fav-a-fig</button>
+                        ) : null }
+                    </div>
                 </li>
         )
     })
@@ -46,8 +50,7 @@ function Minifigs() {
     }
     const handlePrevPage = () => {
         displayFigs(oldUrl)
-    }
-    
+    }   
 
     return(
         <>
@@ -57,10 +60,15 @@ function Minifigs() {
                 {nextUrl && <button onClick={handleNextPage}>Next Page</button>}
             </div>
             <ul className="minifig-list">
-                {minfigDisplay}
+                {minifigDisplay}
             </ul>
         </>
     )
 }
+const mapStateToProps = (state) => {
+    return {
+        authUser: state.isAuth
+    }
+}
 
-export default connect()(Minifigs)
+export default connect(mapStateToProps)(Minifigs)

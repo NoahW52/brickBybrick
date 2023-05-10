@@ -26,6 +26,7 @@ function Login(props) {
         const result = await response.json()
         if(result.success) {
             localStorage.setItem('jwt', result.token)
+            localStorage.setItem('userId', result.userId)
             props.authenticator(result.token)
             navigate('/')
         }else {

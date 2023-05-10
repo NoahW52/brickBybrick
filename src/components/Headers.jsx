@@ -9,10 +9,13 @@ function Headers() {
                 <a href="/" className="site-title">brickBybrick</a>
                 <ul>
                     <div>
-                        <a href="#" className="categoryHeader">Sets</a>
+                        <a href="sets" className="categoryHeader">Sets</a>
                     </div>
                     <div>
                         <a href="/minifigs" className="categoryHeader">Minfigs</a>
+                    </div>
+                    <div>
+                        <a href="#" className="categoryHeader">Pieces</a>
                     </div>
 
                     <li>
