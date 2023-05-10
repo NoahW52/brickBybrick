@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react"
+import { connect } from "react-redux"
 
-export default function FetchApi() {
+function FetchApi() {
     
     
     return(
@@ -7,3 +9,5 @@ export default function FetchApi() {
         </>
     )
 }
+
+export default connect()(FetchApi)

@@ -1,0 +1,20 @@
+.minifig-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* These 2 lines of code were all I needed to make the code go horizantally and wrap at the end of the page */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.minifig-item {
+    width: 200px;
+    flex: 1 1 200px;
+    margin: 0 10px 10px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+.figPic{
+    width: 100px;
+    height: auto;
+}

@@ -10,7 +10,7 @@ function ProtectedRoute(props) {
         if(!props.authCheck) {
             navigate('/login')
         }
-    })
+    }, [])
     return props.children
 }
 const mapStateToProps = (state) => {
