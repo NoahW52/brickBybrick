@@ -20,7 +20,6 @@ function Minifigs(props) {
           }
         })
         const result = await response.json()
-        console.log(result)
         setInfo(result)
         setNextUrl(result.next)
         setPrevUrl(result.previous)
@@ -29,7 +28,7 @@ function Minifigs(props) {
         return(
                 <li key={figs.id} className="minifig-item">
                     <div>{figs.name}</div>
-                    <div>
+                            <div>
                         {figs.set_img_url ? (
                             <img src={figs.set_img_url} className="figPic"/>
                         ) : (

@@ -1,0 +1,19 @@
+.parts-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style: none;
+}
+.parts-item {
+    width: 200px;
+    flex: 1 1 200px;
+    margin: 0 10px 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+.partsPic {
+    width: 100px;
+    height: auto;
+}
