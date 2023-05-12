@@ -20,3 +20,17 @@
     height: auto;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
+.pageButton {
+    margin-top: 2rem;
+    background-color: red;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.pageButton:hover {
+    background-color: yellow;
+    color: blue;
+}

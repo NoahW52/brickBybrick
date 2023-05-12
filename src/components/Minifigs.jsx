@@ -5,6 +5,10 @@ import '../css/Minifigs.css'
 
 function Minifigs(props) {
 
+    const apiUrl = import.meta.env.VITE_API_URL
+    const lsUrl = import.meta.env.VITE_LH_URL
+    const authkey = import.meta.env.VITE_AUTH_KEY
+
     const [info, setInfo] = useState({})
     const [nextUrl, setNextUrl] = useState('')
     const [oldUrl, setPrevUrl] = useState('')
@@ -16,7 +20,7 @@ function Minifigs(props) {
     const addFigsToList = async (legoFig) => {
         const userId = localStorage.getItem('userId')
         const token = localStorage.getItem('jwt')
-        const response = await fetch(`http://localhost:8080/api/minifigList/${userId}`, {
+        const response = await fetch(`${lsUrl}minifigList/${userId}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -33,9 +37,9 @@ function Minifigs(props) {
     }
 
     const displayFigs = async (url) => {
-        const response = await fetch(url || 'https://rebrickable.com/api/v3/lego/minifigs/', {
+        const response = await fetch(url || `${apiUrl}minifigs/`, {
             headers: {
-                'Authorization': 'key 04d1c7b9d0cf244e51f5f7382774d20e'
+                'Authorization': `${authkey}`
             }
         })
         const result = await response.json()
@@ -58,7 +62,7 @@ function Minifigs(props) {
                         <button onClick={() => addFigsToList(figs)} className="button">fav-a-fig</button>
                     ) : null}
                 </div>
-                <div>{figs.name}</div>
+                <div className="api-item-name">{figs.name}</div>
             </li>
         )
     })
@@ -74,15 +78,15 @@ function Minifigs(props) {
         <>
             <Headers />
             <div className="buttonContainer">
-                {oldUrl && <button onClick={handlePrevPage}>Prev Page</button>}
-                {nextUrl && <button onClick={handleNextPage}>Next Page</button>}
+                {oldUrl && <button onClick={handlePrevPage} className="pageButton">Prev Page</button>}
+                {nextUrl && <button onClick={handleNextPage} className="pageButton">Next Page</button>}
             </div>
             <ul className="minifig-list">
                 {minifigDisplay}
             </ul>
             <div className="buttonContainer">
-                {oldUrl && <button onClick={handlePrevPage}>Prev Page</button>}
-                {nextUrl && <button onClick={handleNextPage}>Next Page</button>}
+                {oldUrl && <button onClick={handlePrevPage} className="pageButton">Prev Page</button>}
+                {nextUrl && <button onClick={handleNextPage} className="pageButton">Next Page</button>}
             </div>
         </>
     )

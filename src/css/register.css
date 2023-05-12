@@ -1,4 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+.register-page {
+    position: relative;
+    height: 100vh;
+}
+
+
 body.register-page {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.8;
+    z-index: -1;
     background-image: url('../images-gifs/b98b4c6a91ab12ba05328a752cfdce4f.gif');
-    background-size: 430px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+h1 {
+    margin-bottom: 2rem;
+}
+
+button {
+    margin-top: 2rem;
+    background-color: yellow;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: red;
+    color: white;
 }

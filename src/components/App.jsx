@@ -6,6 +6,9 @@ import { connect } from 'react-redux'
 function App() {
   document.body.className = "home-page"
 
+  const apiUrl = import.meta.env.VITE_API_URL
+  const authkey = import.meta.env.VITE_AUTH_KEY
+
   const [homeTheme, setHomeTheme] = useState({})
   const [homeFig, setHomeFig] = useState({})
   const [prev, setPrev] = useState('')
@@ -22,9 +25,9 @@ function App() {
   },[])
 
   const displayHomePageThemes = async (url) => {
-    const response = await fetch(url || 'https://rebrickable.com/api/v3/lego/themes/', {
+    const response = await fetch(url || `${apiUrl}themes/`, {
       headers: {
-        'Authorization': 'key 04d1c7b9d0cf244e51f5f7382774d20e'
+        'Authorization': `${authkey}`
       }
     })
     const result = await response.json()
@@ -36,15 +39,15 @@ function App() {
   const mapDisplayTheme = homeTheme.results && homeTheme.results.map((theme) => {
     return (
       <li key={theme.id} className='theme-item'>
-        <div>{theme.name}</div>
+        <div className='api-item-name'>{theme.name}</div>
       </li>
     )
   })
 
   const displayFigs = async (url) => {
-    const response = await fetch(url || 'https://rebrickable.com/api/v3/lego/minifigs/', {
+    const response = await fetch(url || `${apiUrl}minifigs/`, {
       headers: {
-        'Authorization': 'key 04d1c7b9d0cf244e51f5f7382774d20e'
+        'Authorization': `${authkey}`
       }
     })
     const result = await response.json()
@@ -62,17 +65,11 @@ function App() {
             ) : (
               <img src={'https://tng-avatars.imgix.net/default_avatar.jpeg?ar=1&auto=format&fit=crop&w=250'} className="figPic" />
               )}
-              <div>{homeF.name}</div>
+              <div className='api-item-name'>{homeF.name}</div>
         </div>
       </li>
     )
   })
-
-  // const handleFilter = (year) => {
-  //   setSelectYear(year)
-  //   const filtered = data.filter((item) => item.year === year)
-  //   setFilter(filtered)
-  // }
 
   const handleNextPage = () => {
     displayHomePageThemes(next)

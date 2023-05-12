@@ -4,6 +4,11 @@ import Headers from "./Headers";
 import '../css/Parts.css'
 
 function Parts(props) {
+
+    const apiUrl = import.meta.env.VITE_API_URL
+    const lsUrl = import.meta.env.VITE_LH_URL
+    const authkey = import.meta.env.VITE_AUTH_KEY
+
     const [oldPart, SetPart] = useState({})
     const [next, SetNext] = useState('')
     const [prev, SetPrev] = useState('')
@@ -20,9 +25,9 @@ function Parts(props) {
     }, [])
 
     const displayParts = async (url) => {
-         const response = await fetch(url || 'https://rebrickable.com/api/v3/lego/parts', {
+         const response = await fetch(url || `${apiUrl}parts`, {
             headers: {
-                "Authorization": "key 04d1c7b9d0cf244e51f5f7382774d20e"
+                "Authorization": `${authkey}`
             } 
         })
         const result = await response.json()
@@ -33,7 +38,7 @@ function Parts(props) {
     const partsContent = oldPart.results && oldPart.results.map((part) => {
         return (
             <li key={part.id} className="parts-item">
-                <div>{part.name}</div>
+                <div className="api-item-name">{part.name}</div>
                 <div>
                     {part.part_img_url ? (
                         <img src={part.part_img_url} className="partsPic"/>
@@ -49,13 +54,18 @@ function Parts(props) {
         <>
             <Headers />
             <div className="buttonContainer">
-                {prev &&<button onClick={handlePrevPage}>Prev Page</button>}
-                {next &&<button onClick={handleNextPage}>Next Page</button>}
+                {prev &&<button onClick={handlePrevPage} className="pageButton">Prev Page</button>}
+                {next &&<button onClick={handleNextPage} className="pageButton">Next Page</button>}
             </div>
 
             <ul className="parts-list">
             {partsContent}
             </ul>
+
+            <div className="buttonContainer">
+                {prev &&<button onClick={handlePrevPage} className="pageButton">Prev Page</button>}
+                {next &&<button onClick={handleNextPage} className="pageButton">Next Page</button>}
+            </div>
 
         </>
     )

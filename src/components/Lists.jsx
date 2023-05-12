@@ -5,6 +5,9 @@ import '../css/Lists.css'
 function Lists(props) {
     document.body.className = "list-page"
 
+    const apiUrl = import.meta.env.VITE_API_URL
+    const lsUrl = import.meta.env.VITE_LH_URL
+
     const [figList, setFigList] = useState([])
     const [setList, setSetList] = useState([])
 
@@ -13,7 +16,7 @@ function Lists(props) {
 
         try {
             const userId = localStorage.getItem('userId')
-            const response = await fetch(`http://localhost:8080/api/minifigList/${userId}`, {
+            const response = await fetch(`${lsUrl}minifigList/${userId}`, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -28,7 +31,7 @@ function Lists(props) {
     const arrayListSets = async () => {
         try {
             const userId = localStorage.getItem('userId')
-            const response = await fetch(`http://localhost:8080/api/setList/${userId}`, {
+            const response = await fetch(`${lsUrl}setList/${userId}`, {
                 headers: {
                     "Content-Type": "application/json"
                 },

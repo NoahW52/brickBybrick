@@ -4,6 +4,11 @@ import Headers from "./Headers"
 import '../css/Sets.css'
 
 function Sets(props) {
+
+    const apiUrl = import.meta.env.VITE_API_URL
+    const lsUrl = import.meta.env.VITE_LH_URL
+    const authkey = import.meta.env.VITE_AUTH_KEY
+
     const [oldSet, SetNewSet] = useState({})
     const [next, setNext] = useState('')
     const [prev, setPrev] = useState('')
@@ -15,7 +20,7 @@ function Sets(props) {
     const addSetToList = async(legoSet) => {
         const userId = localStorage.getItem('userId')
         const token = localStorage.getItem('jwt')
-        const response = await fetch(`http://localhost:8080/api/setList/${userId}`, {
+        const response = await fetch(`${lsUrl}setList/${userId}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -35,9 +40,9 @@ function Sets(props) {
     }
 
     const displaySets = async(url) => {
-        const response = await fetch(url || 'https://rebrickable.com/api/v3/lego/sets/', {
+        const response = await fetch(url || `${apiUrl}sets/`, {
             headers: { 
-                "Authorization" : "key 04d1c7b9d0cf244e51f5f7382774d20e"
+                "Authorization" : `${authkey}`
             }
         })
         const result = await response.json()
@@ -48,11 +53,11 @@ function Sets(props) {
     const setDisplay = oldSet.results && oldSet.results.map((sets) => {
         return(
             <li key={sets.id} className="set-item">
-                <div>{sets.name}</div>
-                <div>{sets.set_num}</div>
+                <div className="api-item-name">{sets.name}</div>
+                <div className="api-item-name">{sets.set_num}</div>
                 <div><img src={sets.set_img_url} className="setPic"/></div>
-                <div>Piece Count: {sets.num_parts}</div>
-                <div>Year Released: {sets.year}</div>
+                <div className="api-item-name">Piece Count: {sets.num_parts}</div>
+                <div className="api-item-name">Year Released: {sets.year}</div>
                 <div>
                     {props.authUser ? (
                         <button onClick={() => addSetToList(sets)}>fav-a-set</button>
@@ -72,13 +77,13 @@ function Sets(props) {
     return(
         <>
             <Headers />  
-            {prev && <button onClick={handlePrevPage}>Previous</button>}
-            {next && <button onClick={handleNextPage}>Next</button>}
+            {prev && <button onClick={handlePrevPage} className="pageButton">Previous</button>}
+            {next && <button onClick={handleNextPage} className="pageButton">Next</button>}
             <ul className="set-list">
                 {setDisplay}
             </ul>
-            {prev && <button onClick={handlePrevPage}>Previous</button>}
-            {next && <button onClick={handleNextPage}>Next</button>}
+            {prev && <button onClick={handlePrevPage} className="pageButton">Previous</button>}
+            {next && <button onClick={handleNextPage} className="pageButton">Next</button>}
         </>
     )
 }

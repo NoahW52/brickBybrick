@@ -4,6 +4,8 @@ import '../css/Headers.css'
 function Headers(props) {
     document.body.className = "headers-page"
 
+    
+
     const handleLogout = () => {
         localStorage.removeItem('jwt')
         localStorage.removeItem('userId')

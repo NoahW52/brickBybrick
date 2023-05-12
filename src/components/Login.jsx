@@ -8,6 +8,10 @@ import '../css/Login.css'
 function Login(props) {
     document.body.className = "login-page"
 
+    const apiUrl = import.meta.env.VITE_API_URL
+    const lsUrl = import.meta.env.VITE_LH_URL
+    const authkey = import.meta.env.VITE_AUTH_KEY
+
     const [user, setUser] = useState({})
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
@@ -19,7 +23,7 @@ function Login(props) {
         })
     } 
     const handleButton = async() => {
-        const response = await fetch('http://localhost:8080/api/login', {
+        const response = await fetch(`${lsUrl}login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
@@ -41,7 +45,7 @@ function Login(props) {
             <Link to={'/'}>
                 <button>home</button>
             </Link>
-            <h1>Login Here!</h1>
+            <h1 className='api-item-name'>Login Here!</h1>
             <input type="text" placeholder="Username" name="username" onChange={handleInput}/>
             <br />
             <input type="text" placeholder="Password" name="password" onChange={handleInput}/>

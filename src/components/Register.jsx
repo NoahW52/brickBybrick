@@ -6,6 +6,10 @@ import '../css/register.css'
 
 function Register(props) {
     document.body.className = "register-page"
+
+    const apiUrl = import.meta.env.VITE_API_URL
+    const lsUrl = import.meta.env.VITE_LH_URL
+
     const [register, setRegister] = useState({})
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
@@ -17,7 +21,7 @@ function Register(props) {
         })
     }
     const handleRegister = async () => {
-        const response = await fetch('http://localhost:8080/api/register', {
+        const response = await fetch(`${lsUrl}register`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(register)
@@ -36,7 +40,7 @@ function Register(props) {
     }
     return(
         <>
-            <div className='gif-background'></div>
+            <div className='register-container'></div>
             <Link to={'/'}>
                 <button>home</button>
             </Link>
