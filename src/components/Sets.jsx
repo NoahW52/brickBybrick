@@ -12,8 +12,8 @@ function Sets(props) {
         displaySets()
     }, [])
     
-    const addSetToList = async() => {
-        const userId = localStorage.getItem('_id')
+    const addSetToList = async(legoSet) => {
+        const userId = localStorage.getItem('userId')
         const token = localStorage.getItem('jwt')
         const response = await fetch(`http://localhost:8080/api/setList/${userId}`, {
             method: "POST",
@@ -21,12 +21,17 @@ function Sets(props) {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
-            body: JSON.stringify({
-                setId: oldSet.results[0].set_num
+            body: JSON.stringify({ 
+                name: legoSet.name,
+                set_num: legoSet.set_num,
+                set_img_url: legoSet.set_img_url,
+                num_parts: legoSet.num_parts,
+                year: legoSet.year 
             })
         })
         const result = await response.json()
         console.log(result)
+        console.log('set added to list')
     }
 
     const displaySets = async(url) => {
@@ -44,13 +49,14 @@ function Sets(props) {
         return(
             <li key={sets.id} className="set-item">
                 <div>{sets.name}</div>
+                <div>{sets.set_num}</div>
                 <div><img src={sets.set_img_url} className="setPic"/></div>
                 <div>Piece Count: {sets.num_parts}</div>
                 <div>Year Released: {sets.year}</div>
                 <div>
                     {props.authUser ? (
-                        <button onClick={addSetToList}>fav-a-set</button>
-                    ) : null}
+                        <button onClick={() => addSetToList(sets)}>fav-a-set</button>
+                        ) : null}
                 </div>
             </li>
         )
@@ -71,6 +77,8 @@ function Sets(props) {
             <ul className="set-list">
                 {setDisplay}
             </ul>
+            {prev && <button onClick={handlePrevPage}>Previous</button>}
+            {next && <button onClick={handleNextPage}>Next</button>}
         </>
     )
 }

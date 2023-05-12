@@ -10,14 +10,33 @@ function Minifigs(props) {
     const [oldUrl, setPrevUrl] = useState('')
 
     useEffect(() => {
-      displayFigs()
+        displayFigs()
     }, [])
-    
+
+    const addFigsToList = async (legoFig) => {
+        const userId = localStorage.getItem('userId')
+        const token = localStorage.getItem('jwt')
+        const response = await fetch(`http://localhost:8080/api/minifigList/${userId}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                name: legoFig.name,
+                set_img_url: legoFig.set_img_url
+            })
+        })
+        const result = await response.json()
+        console.log(result)
+        console.log('Minifig added to list!')
+    }
+
     const displayFigs = async (url) => {
-      const response = await fetch(url || 'https://rebrickable.com/api/v3/lego/minifigs/', {
-        headers: {
-           'Authorization': 'key 04d1c7b9d0cf244e51f5f7382774d20e'
-          }
+        const response = await fetch(url || 'https://rebrickable.com/api/v3/lego/minifigs/', {
+            headers: {
+                'Authorization': 'key 04d1c7b9d0cf244e51f5f7382774d20e'
+            }
         })
         const result = await response.json()
         setInfo(result)
@@ -25,22 +44,22 @@ function Minifigs(props) {
         setPrevUrl(result.previous)
     }
     const minifigDisplay = info.results && info.results.map((figs) => {
-        return(
-                <li key={figs.id} className="minifig-item">
-                    <div>{figs.name}</div>
-                            <div>
-                        {figs.set_img_url ? (
-                            <img src={figs.set_img_url} className="figPic"/>
-                        ) : (
-                            <img src={'https://tng-avatars.imgix.net/default_avatar.jpeg?ar=1&auto=format&fit=crop&w=250'} className="figPic"/>
-                        )}
-                    </div>
-                    <div>
-                        { props.authUser ? (
-                            <button className="button">fav-a-fig</button>
-                        ) : null }
-                    </div>
-                </li>
+        return (
+            <li key={figs.id} className="minifig-item">
+                <div>
+                    {figs.set_img_url ? (
+                        <img src={figs.set_img_url} className="figPic" />
+                    ) : (
+                        <img src={'https://tng-avatars.imgix.net/default_avatar.jpeg?ar=1&auto=format&fit=crop&w=250'} className="figPic" />
+                    )}
+                </div>
+                <div>
+                    {props.authUser ? (
+                        <button onClick={() => addFigsToList(figs)} className="button">fav-a-fig</button>
+                    ) : null}
+                </div>
+                <div>{figs.name}</div>
+            </li>
         )
     })
 
@@ -49,9 +68,9 @@ function Minifigs(props) {
     }
     const handlePrevPage = () => {
         displayFigs(oldUrl)
-    }   
+    }
 
-    return(
+    return (
         <>
             <Headers />
             <div className="buttonContainer">
@@ -61,6 +80,10 @@ function Minifigs(props) {
             <ul className="minifig-list">
                 {minifigDisplay}
             </ul>
+            <div className="buttonContainer">
+                {oldUrl && <button onClick={handlePrevPage}>Prev Page</button>}
+                {nextUrl && <button onClick={handleNextPage}>Next Page</button>}
+            </div>
         </>
     )
 }

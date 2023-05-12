@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .list-list {
+    border: 1px solid black;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+    list-style: none;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .lists-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .list-wrapper {
+    width: 45%;
+    padding: 10px;
+  }
+  .list-list li {
+    width: calc(50% - 10px);
+  }
+
+  .setList-item,
+  .figList-item {
+    height: auto;
+    transition: transform 0.3s ease-out;
+    text-align: center;
+  }
+  
+  .figList-item:hover,
+  .setList-item:hover {
+    transform: scale(1.3);
+  }

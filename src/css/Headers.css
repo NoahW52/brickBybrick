@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 body.headers-page {
+    background-image: url('../images-gifs/757X.gif');
     margin: 0;
 }
 .nav {
@@ -15,6 +16,7 @@ body.headers-page {
 }
 .site-title {
     font-size: 3rem;
+    font-family: 'Bebas Neue', sans-serif;
 }
 .nav ul {
     padding: 0;
@@ -37,4 +39,8 @@ body.headers-page {
 .nav li:hover {
     background-color: #777;
     border-radius: 5px;
+}
+.categoryHeader {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 25px;
 }
