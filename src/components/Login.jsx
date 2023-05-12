@@ -2,9 +2,11 @@ import * as actionTypes from '../store/actionTypes/actionTypes.js'
 import { useState } from "react";
 import { connect } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import '../css/Login.css'
 
 
 function Login(props) {
+    document.body.className = "login-page"
 
     const [user, setUser] = useState({})
     const [errorMessage, setErrorMessage] = useState('')
@@ -35,6 +37,7 @@ function Login(props) {
     }
     return (
         <>
+        <div className='login-container'>
             <Link to={'/'}>
                 <button>home</button>
             </Link>
@@ -44,6 +47,7 @@ function Login(props) {
             <input type="text" placeholder="Password" name="password" onChange={handleInput}/>
             <br />
             <button onClick={handleButton}>Login</button>
+        </div>
         </>
     )
 }

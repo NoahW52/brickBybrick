@@ -1,0 +1,37 @@
+body.login-page {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-image: url('../images-gifs/2mud.gif');
+    
+    background-size: 500px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 100vh;
+}
+
+h1 {
+    margin-bottom: 2rem;
+}
+
+button {
+    margin-top: 2rem;
+    background-color: yellow;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: red;
+    color: white;
+}
