@@ -21,7 +21,7 @@ function Register(props) {
         })
     }
     const handleRegister = async () => {
-        const response = await fetch(`${lsUrl}register`, {
+        const response = await fetch(`${lsUrl}/api/register`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(register)

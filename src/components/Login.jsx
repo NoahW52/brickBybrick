@@ -23,7 +23,7 @@ function Login(props) {
         })
     } 
     const handleButton = async() => {
-        const response = await fetch(`${lsUrl}login`, {
+        const response = await fetch(`${lsUrl}/api/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
