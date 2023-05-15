@@ -16,7 +16,7 @@ function Lists(props) {
 
         try {
             const userId = localStorage.getItem('userId')
-            const response = await fetch(`${lsUrl}minifigList/${userId}`, {
+            const response = await fetch(`${lsUrl}/api/minifigList/${userId}`, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -31,7 +31,7 @@ function Lists(props) {
     const arrayListSets = async () => {
         try {
             const userId = localStorage.getItem('userId')
-            const response = await fetch(`${lsUrl}setList/${userId}`, {
+            const response = await fetch(`${lsUrl}/api/setList/${userId}`, {
                 headers: {
                     "Content-Type": "application/json"
                 },

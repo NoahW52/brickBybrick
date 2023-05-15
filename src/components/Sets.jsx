@@ -20,7 +20,7 @@ function Sets(props) {
     const addSetToList = async(legoSet) => {
         const userId = localStorage.getItem('userId')
         const token = localStorage.getItem('jwt')
-        const response = await fetch(`${lsUrl}setList/${userId}`, {
+        const response = await fetch(`${lsUrl}/api/setList/${userId}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

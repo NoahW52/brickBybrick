@@ -20,7 +20,7 @@ function Minifigs(props) {
     const addFigsToList = async (legoFig) => {
         const userId = localStorage.getItem('userId')
         const token = localStorage.getItem('jwt')
-        const response = await fetch(`${lsUrl}minifigList/${userId}`, {
+        const response = await fetch(`${lsUrl}/api/minifigList/${userId}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
