@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { Link } from "react-router-dom"
 import '../css/Headers.css'
 
 function Headers(props) {
@@ -17,25 +18,25 @@ function Headers(props) {
                 <a href="/" className="site-title">brickBybrick</a>
                 <ul>
                     <div>
-                        {props.authenticator ? <a href="/lists" className="categoryHeader">Want list</a> : null}
+                        {props.authenticator ? <Link to="/lists" className="categoryHeader">Want list</Link> : null}
                     </div>
                     <div>
-                        <a href="/sets" className="categoryHeader">Sets</a>
+                    <Link to="/sets" className="categoryHeader">Sets</Link>
                     </div>
                     <div>
-                        <a href="/minifigs" className="categoryHeader">Minfigs</a>
+                    <Link to="/minifigs" className="categoryHeader">Minifigs</Link>
                     </div>
                     <div>
-                        <a href="/parts" className="categoryHeader">Parts</a>
+                    <Link to="/parts" className="categoryHeader">Parts</Link>
                     </div>
                     <li>
-                        {props.authenticator ? null : <a href="/login" className="categoryHeader">Login</a>}
+                        {props.authenticator ? null : <Link to="/login" className="categoryHeader">Login</Link>}
                     </li>
                     <li>
-                        {props.authenticator ? null : <a href="/register" className="categoryHeader">Register</a>}
+                        {props.authenticator ? null : <Link to="/register" className="categoryHeader">Register</Link>}
                     </li>
                     <li>
-                        {props.authenticator ? <a onClick={handleLogout} href="/" className="categoryHeader">logout</a> : null}
+                        {props.authenticator ? <Link onClick={handleLogout} to="/" className="categoryHeader">logout</Link> : null}
                     </li>
                 </ul>
             </nav>
