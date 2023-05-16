@@ -10,7 +10,7 @@ function Headers(props) {
     const handleLogout = () => {
         localStorage.removeItem('jwt')
         localStorage.removeItem('userId')
-
+        window.location.reload()
     }
     return (
         <>
