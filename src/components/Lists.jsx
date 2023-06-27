@@ -63,6 +63,7 @@ function Lists(props) {
                         )}
                     </div>
                     <div>{listF.name}</div>
+                <button className="deleteButton">Delete</button>
                 </div>
             </li>
         )
@@ -77,6 +78,7 @@ function Lists(props) {
                     <div>Piece Count: {sets.num_parts}</div>
                     <div>Year Released: {sets.year}</div>
                     <div>{sets.set_num}</div>
+                    <button className="deleteButton">Delete</button>
                 </div>
             </li>
         )

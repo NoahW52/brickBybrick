@@ -43,7 +43,7 @@ h1 {
     margin-bottom: 2rem;
 }
 
-button {
+.registerButton {
     margin-top: 2rem;
     background-color: yellow;
     border: none;
@@ -54,7 +54,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.registerButton:hover {
     background-color: red;
     color: white;
 }

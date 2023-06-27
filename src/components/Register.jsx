@@ -53,7 +53,7 @@ function Register(props) {
             <br />
             <input type="text" placeholder="Password" name="password" onChange={handleInput}/>
             <br />
-            <button onClick={handleRegister}>Register</button>
+            <button className='registerButton' onClick={handleRegister}>Register</button>
         </>
     )
 }

@@ -91,25 +91,25 @@ function App() {
       <h1>Welcome to brickBybrick</h1>
       <p>Checkout all of the lego themes to exist and The newest sets and figs to be released!</p>
       <ul className='theme-list'>
-        <div className="buttonContainer">
-          {next && <button onClick={handleNextPage}>Next Page</button>}
-          {prev && <button onClick={handlePrevPage}>Prev Page</button>}
+        <div>
+          {next && <button className="buttonContainer" onClick={handleNextPage}>Next Page</button>}
+          {prev && <button className="buttonContainer" onClick={handlePrevPage}>Prev Page</button>}
         </div>
         {mapDisplayTheme}
-        <div className='buttonContainer'>
-          {next && <button onClick={handleNextPage}>Next Page</button>}
-          {prev && <button onClick={handlePrevPage}>Prev Page</button>}
+        <div>
+          {next && <button className="buttonContainer" onClick={handleNextPage}>Next Page</button>}
+          {prev && <button className="buttonContainer" onClick={handlePrevPage}>Prev Page</button>}
         </div>
       </ul>
       <ul className='theme-list'>
-      <div className="buttonContainer">
-          {figsNext && <button onClick={figNext}>Next Page</button>}
-          {figsPrev && <button onClick={figPrev}>Prev Page</button>}
+      <div>
+          {figsNext && <button className="buttonContainer" onClick={figNext}>Next Page</button>}
+          {figsPrev && <button className="buttonContainer" onClick={figPrev}>Prev Page</button>}
         </div>
         {displayHomeFig}
-        <div className="buttonContainer">
-          {figsNext && <button onClick={figNext}>Next Page</button>}
-          {figsPrev && <button onClick={figPrev}>Prev Page</button>}
+        <div>
+          {figsNext && <button className="buttonContainer" onClick={figNext}>Next Page</button>}
+          {figsPrev && <button className="buttonContainer" onClick={figPrev}>Prev Page</button>}
         </div>
       </ul>
 

@@ -50,7 +50,7 @@ function Login(props) {
             <br />
             <input type="text" placeholder="Password" name="password" onChange={handleInput}/>
             <br />
-            <button onClick={handleButton}>Login</button>
+            <button className='loginButton' onClick={handleButton}>Login</button>
         </div>
         </>
     )

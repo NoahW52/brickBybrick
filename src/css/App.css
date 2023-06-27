@@ -35,3 +35,13 @@ body.home-page {
     margin: 7rem;
     padding: 7rem;
 }
+.buttonContainer {
+    margin-top: 2rem;
+    background-color: yellow;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+}
