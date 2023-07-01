@@ -53,7 +53,7 @@ function Parts(props) {
     return (
         <>
             <Headers />
-            <div className="buttonContainer">
+            <div>
                 {prev &&<button onClick={handlePrevPage} className="pageButton">Prev Page</button>}
                 {next &&<button onClick={handleNextPage} className="pageButton">Next Page</button>}
             </div>
@@ -62,7 +62,7 @@ function Parts(props) {
             {partsContent}
             </ul>
 
-            <div className="buttonContainer">
+            <div>
                 {prev &&<button onClick={handlePrevPage} className="pageButton">Prev Page</button>}
                 {next &&<button onClick={handleNextPage} className="pageButton">Next Page</button>}
             </div>

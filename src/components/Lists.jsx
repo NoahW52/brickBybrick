@@ -28,6 +28,18 @@ function Lists(props) {
         }
     }
 
+    const deleteFig = async (figId) => {
+        const userId = localStorage.getItem('userId')
+        const response = await fetch(`${lsUrl}/api/minifigList/${userId}/${figId}`, {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'}
+        })
+        if (response.ok) {
+            const updatedFigList = figList.filter((fig) => fig._id !== figId)
+            setFigList(updatedFigList)
+        }
+    }
+
     const arrayListSets = async () => {
         try {
             const userId = localStorage.getItem('userId')
@@ -43,6 +55,18 @@ function Lists(props) {
         }
     }
 
+    const deleteSet = async (setId) => {
+        const userId = localStorage.getItem('userId')
+        const response = await fetch(`${lsUrl}/api/setList/${userId}/${setId}`, {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'}
+        })
+        if (response.ok) {
+            const updatedSetList = setList.filter((set) => set._id !== setId)
+            setSetList(updatedSetList)
+        }
+    }
+
     useEffect(() => {
         arrayListFigs()
     }, [])
@@ -53,7 +77,7 @@ function Lists(props) {
 
     const displayFigsList = figList.map((listF) => {
         return (
-            <li key={listF.id}>
+            <li key={listF._id}>
                 <div className="figList-item">
                     <div>
                         {listF.set_img_url ? (
@@ -63,7 +87,7 @@ function Lists(props) {
                         )}
                     </div>
                     <div>{listF.name}</div>
-                <button className="deleteButton">Delete</button>
+                <button className="deleteButton" onClick={() => deleteFig(listF._id)}>Delete</button>
                 </div>
             </li>
         )
@@ -71,14 +95,14 @@ function Lists(props) {
 
     const displaySetList = setList.map((sets) => {
         return (
-            <li key={sets.id}>
+            <li key={sets._id}>
                 <div className="setList-item">
                     <div><img src={sets.set_img_url} className="setPic" /></div>
                     <div>{sets.name}</div>
                     <div>Piece Count: {sets.num_parts}</div>
                     <div>Year Released: {sets.year}</div>
                     <div>{sets.set_num}</div>
-                    <button className="deleteButton">Delete</button>
+                    <button className="deleteButton" onClick={() => deleteSet(sets._id)}>Delete</button>
                 </div>
             </li>
         )

@@ -77,14 +77,14 @@ function Minifigs(props) {
     return (
         <>
             <Headers />
-            <div className="buttonContainer">
+            <div>
                 {oldUrl && <button onClick={handlePrevPage} className="pageButton">Prev Page</button>}
                 {nextUrl && <button onClick={handleNextPage} className="pageButton">Next Page</button>}
             </div>
             <ul className="minifig-list">
                 {minifigDisplay}
             </ul>
-            <div className="buttonContainer">
+            <div>
                 {oldUrl && <button onClick={handlePrevPage} className="pageButton">Prev Page</button>}
                 {nextUrl && <button onClick={handleNextPage} className="pageButton">Next Page</button>}
             </div>
