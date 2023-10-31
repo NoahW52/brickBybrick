@@ -45,7 +45,7 @@ function Login(props) {
             <Link to={'/'}>
                 <button>home</button>
             </Link>
-            <h1 className='api-item-name'>Login Here!</h1>
+            <h1 className='api-item-name'>Log In</h1>
             <input type="text" placeholder="Username" name="username" onChange={handleInput}/>
             <br />
             <input type="text" placeholder="Password" name="password" onChange={handleInput}/>
